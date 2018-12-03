@@ -1,0 +1,53 @@
+name: megatools
+version: "1.10.2"
+summary: Command-line client for the Mega cloud storage service
+description: |
+    Megatools is a collection of programs for accessing the Mega.co.nz
+    service from the command line.
+    .
+    Megatools allow you to copy individual files as well as entire
+    directory trees to and from the cloud. You can also perform streaming
+    downloads for example to preview videos and audio files, without
+    needing to download the entire file first.
+    .
+    Megatools are robust and optimized for fast operation - as fast as
+    Mega servers allow. Memory requirements and CPU utilization are kept
+    at minimum.
+
+
+confinement: classic
+grade: stable
+
+apps:
+  megacopy:
+    command: bin/megacopy
+  megadf:
+    command: bin/megadf
+  megadl:
+    command: bin/megadl
+  megaget:
+    command: bin/megaget
+  megals:
+    command: bin/megals
+  megamkdir:
+    command: bin/megamkdir
+  megaput:
+    command: bin/megaput
+  megareg:
+    command: bin/megareg
+  megarm:
+    command: bin/megarm
+
+parts:
+  megatools:
+    plugin: autotools
+    source-type: tar
+    source: https://megatools.megous.com/builds/megatools-1.10.2.tar.gz
+    build-packages:
+    - asciidoc
+    - libcurl4-openssl-dev
+    - libssl-dev
+    - gobject-introspection
+    - libglib2.0-dev
+    stage-packages:
+    - libc6
